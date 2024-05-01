@@ -1,11 +1,11 @@
-# Analyze IoT sensor data with machine learning and advanced analytics
+# Mashinani o'rganish va ilg'or tahlillar yordamida IoT sensori ma'lumotlarini tahlil qiling
 
-This code pattern demonstrates the use of Jupyter notebooks to interact with IBM Db2 Event Store -- from the creation of database objects to advanced analytics and machine learning model development and deployment.
+Ushbu kod namunasi IBM Db2 Event Store bilan o'zaro ishlash uchun Jupyter noutbuklaridan foydalanishni namoyish etadi -- ma'lumotlar bazasi ob'ektlarini yaratishdan tortib, ilg'or tahlil va mashinani o'rganish modelini ishlab chiqish va joylashtirishgacha.
 
-The sample data used in this code pattern simulates data collected by real industry IoT sensors. The IoT sample data includes sensor temperature, ambient temperature, power consumption, and timestamp for a group of sensors identified with unique sensor IDs and device IDs.
-A simple IBM Streams flow is used to stream the sample data from a CSV file to an Event Store table.
+Ushbu kod namunasida ishlatiladigan namunaviy ma'lumotlar haqiqiy sanoat IoT sensorlari tomonidan to'plangan ma'lumotlarni simulyatsiya qiladi. IoT namunasi maʼlumotlariga sensor harorati, atrof-muhit harorati, quvvat sarfi va noyob sensor identifikatorlari va qurilma identifikatorlari bilan aniqlangan bir guruh sensorlar uchun vaqt tamgʻasi kiradi.
+Oddiy IBM Streams oqimi CSV faylidan Event Store jadvaliga namuna ma'lumotlarini oqimlash uchun ishlatiladi.
 
-Db2 Event Store is an in-memory database designed for massive structured data volumes and real-time analytics, built on Apache Spark and Apache Parquet Data Format. The solution is optimized for event-driven data processing and analysis. It can support emerging applications that are driven by events such as IoT solutions, payments, logistics and web commerce. It is flexible, scalable and can adapt quickly to your changing business needs over time. Db2 Event Store is available in a free developer edition and an enterprise edition that you can download now. The enterprise edition is free for pre-production and test, please visit the [official product webpage](https://www.ibm.com/products/db2-event-store) for more information.
+Db2 Voqealar do'koni - bu Apache Spark va Apache Parket ma'lumotlar formatida qurilgan, katta tuzilgan ma'lumotlar hajmlari va real vaqtda tahlil qilish uchun mo'ljallangan xotiradagi ma'lumotlar bazasi. Yechim voqealarga asoslangan ma'lumotlarni qayta ishlash va tahlil qilish uchun optimallashtirilgan. U IoT yechimlari, toʻlovlar, logistika va veb-tijorat kabi voqealarga asoslangan rivojlanayotgan ilovalarni qoʻllab-quvvatlashi mumkin. U moslashuvchan, kengaytiriladigan va vaqt o'tishi bilan o'zgaruvchan biznes ehtiyojlaringizga tezda moslasha oladi. Db2 Event Store bepul ishlab chiquvchi nashrida va hozir yuklab olishingiz mumkin bo'lgan korporativ nashrda mavjud. Korxona nashri oldindan ishlab chiqarish va sinovdan o‘tkazish uchun bepul, qo‘shimcha ma’lumot olish uchun [rasmiy mahsulot veb-sahifasiga](https://www.ibm.com/products/db2-event-store) tashrif buyuring.
 
 > Note: Db2 Event Store is built with IBM Watson Studio
 
