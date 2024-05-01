@@ -60,7 +60,7 @@ git clone https://github.com/shohzod-xayrullayev/iot-data-analytics.git
 
 #### Install IBM Streams
 
-> Eslatma: Maʼlumotlarni yuklash uchun taqdim etilgan Jupyter daftaridan foydalanmoqchi boʻlsangiz, bu ixtiyoriy.
+> Eslatma: Maʼlumotlarni yuklash uchun taqdim etilgan Jupyter paketlaridan foydalanmoqchi boʻlsangiz, bu ixtiyoriy.
 
 1. IBM Streams 4.3.1 uchun Quick Start Edition(QSE) Docker tasvirini [bu yerdagi](https://www.ibm.com/support/knowledgecenter/SSCRJU_4.3.0/com.ibm.streams) ko‘rsatmalariga rioya qilib o‘rnating. qse.doc/doc/qse-docker.html).
 
@@ -75,7 +75,7 @@ git clone https://github.com/shohzod-xayrullayev/iot-data-analytics.git
 
 ### 3. IBM Db2 Event Store ma'lumotlar bazasi va jadvalini yarating
 
-Db2 Event Store ma'lumotlar bazasi va jadvali taqdim etilgan Jupyter noutbuklaridan biri bilan yaratilishi mumkin. Mavjud ma'lumotlar bazasi yoki jadvalingizni tashlab qo'yishingiz kerak bo'lsa, daftar sharhlariga qarang.
+Db2 Event Store ma'lumotlar bazasi va jadvali taqdim etilgan Jupyter noutbuklaridan biri bilan yaratilishi mumkin. Mavjud ma'lumotlar bazasi yoki jadvalingizni tashlab qo'yishingiz kerak bo'lsa, paket sharhlariga qarang.
 
 Noutbuk yaratish va ishga tushirish uchun Db2 Event Store UI dan quyidagi tarzda foydalaning:
 
@@ -86,7 +86,7 @@ Noutbuk yaratish va ishga tushirish uchun Db2 Event Store UI dan quyidagi tarzda
 1. “Faylni tanlash” tugmasini bosing va klonlangan repodagi “noutbuklar” katalogiga o‘ting. **`Event_Store_Table_Creation.ipynb`** nomli Jupyter notebook faylini oching.
 1. Pastga aylantiring va “Noutbuk yaratish” tugmasini bosing.
 1. Birinchi kod katagida `HOST` doimiysini tahrirlang. Bu yerda siz uy egasining IP manzilini kiritishingiz kerak bo'ladi.
-1. “Hujayra ▷ Hammasini ishga tushirish” menyusidan foydalanib daftarni ishga tushiring yoki “Play” tugmasi bilan yacheykalarni alohida ishga tushiring.
+1. “Hujayra ▷ Hammasini ishga tushirish” menyusidan foydalanib paketni ishga tushiring yoki “Play” tugmasi bilan yacheykalarni alohida ishga tushiring.
 
 ### 4. IoT maʼlumotlarining namunasini qoʻshing
 
@@ -103,7 +103,7 @@ python ./generator.py -c <Record Count>
 
 #### Stream the data into Event Store
 
-Agar siz IBM Streams dasturini o'rnatgan bo'lsangiz, Voqealar do'koniga namuna ma'lumotlarini yuborish uchun oqimlar oqimidan foydalaning. Aks holda, ma'lumotlar tasmasi daftar yorliq sifatida taqdim etilgan.
+Agar siz IBM Streams dasturini o'rnatgan bo'lsangiz, Voqealar do'koniga namuna ma'lumotlarini yuborish uchun oqimlar oqimidan foydalaning. Aks holda, ma'lumotlar tasmasi paket yorliq sifatida taqdim etilgan.
 
 IBM Streams yoki Jupyter noutbuki uchun maʼlumotlar tasmasi koʻrsatmalarini kengaytirish uchun bosing. Birini tanla:
 
@@ -183,7 +183,7 @@ IBM Streams yoki Jupyter noutbuki uchun maʼlumotlar tasmasi koʻrsatmalarini ke
 </p>
 </details>
 
-<details><summary>Ma'lumotlarni yuklash uchun Jupyter daftaridan foydalaning</summary>
+<details><summary>Ma'lumotlarni yuklash uchun Jupyter paektidan foydalaning</summary>
 <p>
 
 CSV kiritish faylini maʼlumotlar aktivi sifatida qoʻshish uchun Db2 Event Store UI dan foydalaning.
@@ -202,7 +202,7 @@ CSV kiritish faylini maʼlumotlar aktivi sifatida qoʻshish uchun Db2 Event Stor
 
 Noutbukni qo'shish va ishga tushirish uchun yuqoridagi kabi amallarni bajaring. Bu safar **`Event_Store_Data_Feed.ipynb`** nomli faylni tanlang.
 
-Daftar siz loyiha aktivi sifatida qo'shgan CSV faylidan bir million yozuv bilan jadvalni yuklaydi.
+Paket siz loyiha aktivi sifatida qo'shgan CSV faylidan bir million yozuv bilan jadvalni yuklaydi.
 
 </p>
 </details>
@@ -211,13 +211,13 @@ Daftar siz loyiha aktivi sifatida qo'shgan CSV faylidan bir million yozuv bilan 
 
 Noutbukni qo'shish va ishga tushirish uchun xuddi shu jarayonni bajaring. Bu safar **`Event_Store_Querying.ipynb`** nomli faylni tanlang.
 
-Ushbu daftar IBM Db2 Event Store ma'lumotlar bazasida saqlangan ma'lumotlarni so'rash bo'yicha eng yaxshi amaliyotlarni namoyish etadi. Davom etishdan oldin jadvalni muvaffaqiyatli yaratganingizni va yuklaganingizni tekshiring.
+Ushbu paket IBM Db2 Event Store ma'lumotlar bazasida saqlangan ma'lumotlarni so'rash bo'yicha eng yaxshi amaliyotlarni namoyish etadi. Davom etishdan oldin jadvalni muvaffaqiyatli yaratganingizni va yuklaganingizni tekshiring.
 
 ### 6. Ma'lumotlarni tahlil qiling
 
-Keyinchalik, ma'lumotlar tahlili daftarini ishga tushiring. **`Event_Store_Data_Analytics.ipynb`** faylidan foydalaning.
+Keyinchalik, ma'lumotlar tahlili paketini ishga tushiring. **`Event_Store_Data_Analytics.ipynb`** faylidan foydalaning.
 
-Ushbu daftar turli xil ma'lumotlarni tahlil qilish vazifalarini bajarish uchun IBM Db2 Event Store bir nechta mashhur ilmiy vositalar bilan qanday birlashtirilishi mumkinligini ko'rsatadi. Daftarni aylanib chiqayotib, siz ma'lumotlarni filtrlash uchun o'rganasiz va o'lchovlarning korrelyatsiyasi va kovariatsiyasiga misol keltirasiz. Ma'lumotlarni vizualizatsiya qilish uchun siz ba'zi diagrammalardan ham foydalanasiz.
+Ushbu paket turli xil ma'lumotlarni tahlil qilish vazifalarini bajarish uchun IBM Db2 Event Store bir nechta mashhur ilmiy vositalar bilan qanday birlashtirilishi mumkinligini ko'rsatadi. paketni aylanib chiqayotib, siz ma'lumotlarni filtrlash uchun o'rganasiz va o'lchovlarning korrelyatsiyasi va kovariatsiyasiga misol keltirasiz. Ma'lumotlarni vizualizatsiya qilish uchun siz ba'zi diagrammalardan ham foydalanasiz.
 
 #### Harorat ma'lumotlari uchun ehtimollik chizmalari, quti chizmalari va gistogrammalar
 
@@ -231,7 +231,7 @@ Ushbu daftar turli xil ma'lumotlarni tahlil qilish vazifalarini bajarish uchun I
 
 Ushbu bo'lim mashinani o'rganish modelini yaratish va qo'llashni ko'rsatadi. Noutbuk IoT harorat sensori ma'lumotlarimizdan bashorat qilish modelini yaratish va sinab ko'rish uchun Spark MLlib-dan foydalanadi. Oxirida u modelni qanday joylashtirish va ishlatishni ko'rsatadi.
 
-**`Event_Store_ML_Model_Deployment.ipynb`** faylidan foydalanib, daftarni yuklang.
+**`Event_Store_ML_Model_Deployment.ipynb`** faylidan foydalanib, paketni yuklang.
 
 Agar siz Db2 Event Store-ning **Enterprise Edition**-dan foydalanayotgan bo'lsangiz, noutbuk Watson Studio Local bilan yaratilgan Db2 Event Store yordamida modelni o'rnatadi. Noutbukni avvalgidek ishga tushirishingiz mumkin.
 
@@ -268,9 +268,5 @@ new_data = {"deviceID" : 2, "sensorID": 24, "ts": 1541430459386, "ambient_temp":
 #### Natija taxmin qilingan haroratni qaytaradi
 
 ``` piton
-bashorat: [48.98055760884435]
+Natija: [48.98055760884435]
 ```
-
-## Chiqish namunasi
-
-Chiqish namunasi bilan barcha noutbuklarni ko'ring [bu yerda](misollar).
