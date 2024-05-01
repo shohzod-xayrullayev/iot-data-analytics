@@ -42,7 +42,7 @@ Aks holda, komponentlarni mahalliy sifatida joylashtirish uchun quyidagi amallar
 6. [Analyze the data](#6-analyze-the-data)
 7. [Create and deploy a machine learning model](#7-create-and-deploy-a-machine-learning-model)
 
-### 1. Clone the repository
+### 1. Repozitariyni yuklab olish
 
 Clone the `iot-data-analytics` repo locally. In a terminal, run:
 
@@ -50,9 +50,9 @@ Clone the `iot-data-analytics` repo locally. In a terminal, run:
 git clone https://github.com/shohzod-xayrullayev/iot-data-analytics.git
 ```
 
-### 2. Install the prerequisites
+### 2. Oldindan shartlarni o'rnating
 
-#### Install Event Store
+#### Voqealar do'konini o'rnating
 
 > Eslatma: Ushbu kod namunasi EventStore-DeveloperEdition 1.1.4 bilan ishlab chiqilgan
 
@@ -110,116 +110,116 @@ IBM Streams yoki Jupyter noutbuki uchun maʼlumotlar tasmasi koʻrsatmalarini ke
 <details><summary>IBM Streams oqimidan foydalaning</summary>
 <p>
 
-1. Use VNC to connect to your IBM Streams QSE at vnc://streamsqse.localdomain:5905
+1.vnc://streamsqse.localdomain:5905 manzilida IBM Streams QSE-ga ulanish uchun VNC-dan foydalaning.
 
    > **Tip:** On macOS, you can use Finder's menu: `Go ▷ Connect to Server...` and connect to `vnc://streamsqse.localdomain:5905`, and then in your session use `Applications ▷ System Tools ▷ Settings ▷ Devices ▷ Displays` to set the display `Resolution` to `1280 x 1024 (5:4)`.
 
    ![connect_to_server.png](doc/source/images/connect_to_server.png)
 
-1. Launch Streams Studio
+1.Streams Studio-ni ishga tushiring
 
    ![streams_studio.png](doc/source/images/streams_studio.png)
 
-1. Create a new project
+1. Yangi loyiha yarating
 
-   - [ ] Select a workspace
+    - [ ] Ish joyini tanlang
 
-   - [ ] If prompted to "Add Streams Domain connection", use the `Find domain...` button to select `streamsqse.localdomain`.
+    - [ ] Agar "Oqimlar domeniga ulanishni qo'shish" so'ralsa, "streamsqse.localdomain" ni tanlash uchun "Domenni topish..." tugmasidan foydalaning.
 
-   - [ ] Use the upper-left pulldown to create a new project. When prompted to `Select a wizard`, use `IBM Streams Studio ▷ SPL Project`, hit `Next`, provide a name, and hit `Finish`.
+    - [ ] Yangi loyiha yaratish uchun yuqori chapdagi ochiladigan menyudan foydalaning. "Sehrgarni tanlash" so'ralganda, "IBM Streams Studio ▷ SPL Project" dan foydalaning, "Keyingi" tugmasini bosing, nom bering va "Finish" tugmasini bosing.
 
-1. Replace the Event Store toolkit
+1. Voqealar do'koni asboblar to'plamini almashtiring
 
-   - [ ] Using the `Project Explorer` tab, expand your new project, right-click on `Dependencies` and select `Edit Dependencies`. Remove `com.ibm.streamsx.eventstore` version 2.0.3. This is a newer version that does not work with our 1.1.4 Developer Edition of Event Store.
+    - [ ] `Project Explorer` yorlig'idan foydalanib, yangi loyihangizni kengaytiring, `Bog'liqlar` ustiga sichqonchaning o'ng tugmasini bosing va `Bog'liqlarni tahrirlash`-ni tanlang. `com.ibm.streamsx.eventstore` 2.0.3 versiyasini olib tashlang. Bu bizning 1.1.4 Developer Edition Event Store bilan ishlamaydigan yangiroq versiya.
 
-   - [ ] Using the `Streams Explorer` tab, expand `IBM Streams Installations` and `IBM Streams` to show `Toolkit Locations`. Right-click and select `Add Toolkit Location...`. Use the `Directory...` button and add the `/home/streamsadmin/hostdir/toolkits` directory (where you extracted the the streamsx.eventstore_1.2.0-RELEASE.tgz toolkit).
+    - [ ] “Oqimlar Explorer” yorlig‘idan foydalanib, “Asboblar to‘plami joylashuvi”ni ko‘rsatish uchun “IBM Streams Installations” va “IBM Streams” ni kengaytiring. Sichqonchaning o'ng tugmachasini bosing va "Asboblar to'plamining joylashuvini qo'shish ..." -ni tanlang. `Directory...` tugmasidan foydalaning va `/home/streamsadmin/hostdir/toolkits` katalogini qo'shing (bu erda siz streamsx.eventstore_1.2.0-RELEASE.tgz asboblar to'plamini chiqargansiz).
 
-   - [ ] Back in the `Project Explorer` tab, right-click on `Dependencies` and select `Edit Dependencies`, `Add`, and `Browse`. Select `com.ibm.streamsx.eventstore 1.2.0` and hit `OK`. Now we are using the downloaded version that works with our 1.1.4 Developer Edition and ignoring the newer version.
+    - [ ] `Project Explorer` yorlig'iga qayting, `Bog'liqlar` ustiga sichqonchaning o'ng tugmasini bosing va `Bog'liqlarni tahrirlash`, `Qo'shish` va `Browse`-ni tanlang. “com.ibm.streamsx.eventstore 1.2.0” ni tanlang va “OK” tugmasini bosing. Endi biz 1.1.4 Developer Edition bilan ishlaydigan yuklab olingan versiyadan foydalanmoqdamiz va yangi versiyaga e'tibor bermaymiz.
 
      ![add_toolkit_location.png](doc/source/images/add_toolkit_location.png)
 
-1. Create your file source
+1. Fayl manbangizni yarating
 
-   - [ ] Copy the `data/sample_IOT_table.csv` file from your cloned repo to your hostdir.
+    - [ ] Klonlangan repodan `data/sample_IOT_table.csv` faylini xost-direktoringizga nusxalang.
 
-   - [ ] In the `Project Explorer` tab, right-click on your project and select `New  ▷ Main Composite` and create a default `Main.spl`.
+    - [ ] "Project Explorer" yorlig'ida loyihangizni o'ng tugmasini bosing va "Yangi ▷ Main Composite" ni tanlang va standart "Main.spl" ni yarating.
 
-     ![main_composite.png](doc/source/images/main_composite.png)
+      ![main_composite.png](doc/source/images/main_composite.png)
 
-   - [ ] Using the SPL Graphical Editor for `Main.spl`, drag-and-drop the `Toolkits ▷ spl ▷ spl.adapter ▷ FileSource ▷ FileSource` into the `Main` box.
+    - [ ] `Main.spl` uchun SPL Grafik muharriridan foydalanib, `Asboblar to`plami ▷ spl ▷ spl.adapter ▷ FileSource ▷ FileSource`ni `Asosiy` maydoniga sudrab olib tashlang.
 
-     ![file_source.png](doc/source/images/file_source.png)
+      ![file_source.png](doc/source/images/file_source.png)
 
-   - [ ] Double-click the FileSource box, select `Param` in the left sidebar, and edit the value to set it to `"/users/streamsadmin/hostdir/sample_IOT_table.csv"` (where you put the data file). Add a `format` parameter and set the value to `csv`.
+    - [ ] FileSource oynasini ikki marta bosing, chap yon panelda `Param` ni tanlang va qiymatni `"/users/streamsadmin/hostdir/sample_IOT_table.csv"` (ma'lumotlar faylini joylashtirgan joy) qilib o'rnating. "Format" parametrini qo'shing va qiymatni "csv" ga o'rnating.
 
-     ![file_source_params.png](doc/source/images/file_source_params.png)
+      ![file_source_params.png](doc/source/images/file_source_params.png)
 
-   - [ ] Select `Output Ports` in the left sidebar. Remove the `<extends>` row. Click on `Add attribute...`. Add attributes and types to create an output stream schema matching the contents of the CSV file and the Event Store table. The attribute names here don't matter, but the types do. Follow the example below.
+    - [ ] Chap yon panelda “Chiqish portlari”ni tanlang. `<extends>` qatorini olib tashlang. "Atribut qo'shish..." tugmasini bosing. CSV fayli va Voqealar doʻkoni jadvali mazmuniga mos keladigan chiqish oqimi sxemasini yaratish uchun atributlar va turlarni qoʻshing. Bu erda atribut nomlari muhim emas, lekin turlari muhim. Quyidagi misolga amal qiling.
 
-     ![output_stream_schema.png](doc/source/images/output_stream_schema.png)
+![output_stream_schema.png](doc/source/images/output_stream_schema.png)
 
-   - [ ] Close and save the FileSource properties.
+    - [ ] FileSource xususiyatlarini yoping va saqlang.
 
-1. Create your Event Store Sink
+1. Event Store sink yarating
 
-   - [ ] Using the SPL Graphical Editor for `Main.spl`, drag-and-drop the `Toolkits ▷ com.ibm.streamx.eventstore ▷ com.ibm.streamx.eventstore ▷ EventStoreSink` into the `Main` box (be sure to grab the 1.2.0 version).
+    - [ ] `Main.spl` uchun SPL Grafik muharriridan foydalanib, `Asboblar to`plami ▷ com.ibm.streamx.eventstore ▷ com.ibm.streamx.eventstore ▷ EventStoreSink`ni `Asosiy` maydoniga sudrab o`tkazing (bo`ling) 1.2.0 versiyasini oling).
 
-   - [ ] Use your mouse and drag from FileSource output tab to the EventStoreSink input tab.
+    - [ ] Sichqonchadan foydalaning va FileSource chiqish yorligʻidan EventStoreSink kiritish yorligʻiga torting.
 
-     ![connected.png](doc/source/images/connected.png)
+      ![connected.png](doc/source/images/connected.png)
 
-   - [ ] Double-click the EventStoreSink box, select `Param` in the left sidebar, and edit the values to set the connectionString, databaseName and tableName as shown below (but substitute your own Event Store IP address). Close and save.
+    - [ ] EventStoreSink oynasini ikki marta bosing, chap yon panelda `Param` ni tanlang va quyidagi koʻrsatilganidek, ulanish satri, maʼlumotlar bazasi nomi va jadval nomini oʻrnatish uchun qiymatlarni tahrirlang (lekin oʻz Voqealar doʻkonining IP manzilini almashtiring). Yoping va saqlang.
 
-     ![event_store_params.png](doc/source/images/event_store_params.png)
+      ![event_store_params.png](doc/source/images/event_store_params.png)
 
-1. Launch
+1. Ishga tushirish
 
-   - [ ] Save all your changes and let the build finish.
+- [ ] Barcha o'zgarishlarni saqlang va qurilishni tugatsin.
 
-   - [ ] Right-click on your application (`Main`) and `Launch ▷ Launch Active Build Config as Standalone`.
+    - [ ] Ilovangizni (`Asosiy`) sichqonchaning oʻng tugmasi bilan bosing va `Ishga tushirish ▷ Active Build Config-ni mustaqil ravishda ishga tushiring`.
 
-     ![launch_standalone.png](doc/source/images/launch_standalone.png)
+      ![launch_standalone.png](doc/source/images/launch_standalone.png)
 
 </p>
 </details>
 
-<details><summary>Use the Jupyter notebook to load the data</summary>
+<details><summary>Ma'lumotlarni yuklash uchun Jupyter daftaridan foydalaning</summary>
 <p>
 
-Use the Db2 Event Store UI to add the CSV input file as a data asset.
+CSV kiritish faylini maʼlumotlar aktivi sifatida qoʻshish uchun Db2 Event Store UI dan foydalaning.
 
-1. From the upper-left corner `☰` drop down menu, select `My Notebooks`.
+1. Yuqori chap burchakdagi `☰` ochiladigan menyudan `Mening noutbuklarim`-ni tanlang.
 
-   ![go_to_my_notebooks](doc/source/images/go_to_my_notebooks.png)
+    ![mening_notebooks_ga_go_kun](doc/source/images/go_to_notebooks.png)
 
-1. Scroll down and click on `add data assets`.
+1. Pastga aylantiring va “maʼlumotlar aktivlarini qoʻshish” tugmasini bosing.
 
-   ![add_to_my_notebooks](doc/source/images/add_to_my_notebooks.png)
+    ![mening_notebooksga_qo'shish](doc/source/images/add_to_notebooks.png)
 
-1. Click `browse` and navigate to the `data` directory in your cloned repo. Open the file `sample_IOT_table.csv`.
+1. "Browse" tugmasini bosing va klonlangan repodagi "ma'lumotlar" katalogiga o'ting. Sample_IOT_table.csv faylini oching.
 
-   ![data_assets](doc/source/images/data_assets.png)
+    ![data_assets](doc/source/images/data_assets.png)
 
-Follow the same process as above to add and run a notebook. This time choose the file named **`Event_Store_Data_Feed.ipynb`**.
+Noutbukni qo'shish va ishga tushirish uchun yuqoridagi kabi amallarni bajaring. Bu safar **`Event_Store_Data_Feed.ipynb`** nomli faylni tanlang.
 
-The notebook loads the table with one million records from the CSV file that you added as a project asset.
+Daftar siz loyiha aktivi sifatida qo'shgan CSV faylidan bir million yozuv bilan jadvalni yuklaydi.
 
 </p>
 </details>
 
-### 5. Query the table
+### 5. Jadvalga so'rov o'tkazing
 
-Follow the same process to add and run a notebook. This time choose the file named **`Event_Store_Querying.ipynb`**.
+Noutbukni qo'shish va ishga tushirish uchun xuddi shu jarayonni bajaring. Bu safar **`Event_Store_Querying.ipynb`** nomli faylni tanlang.
 
-This notebook demonstrates best practices for querying the data stored in the IBM Db2 Event Store database. Verify that you have successfully created and loaded the table before continuing.
+Ushbu daftar IBM Db2 Event Store ma'lumotlar bazasida saqlangan ma'lumotlarni so'rash bo'yicha eng yaxshi amaliyotlarni namoyish etadi. Davom etishdan oldin jadvalni muvaffaqiyatli yaratganingizni va yuklaganingizni tekshiring.
 
-### 6. Analyze the data
+### 6. Ma'lumotlarni tahlil qiling
 
-Next, run the data analytics notebook. Use the file **`Event_Store_Data_Analytics.ipynb`**.
+Keyinchalik, ma'lumotlar tahlili daftarini ishga tushiring. **`Event_Store_Data_Analytics.ipynb`** faylidan foydalaning.
 
-This notebook shows how the IBM Db2 Event Store can be integrated with multiple popular scientific tools to perform various data analytics tasks. As you walk through the notebook, you'll explore the data to filter it and example the correlation and covariance of the measurements. You'll also use some charts to visualize the data.
+Ushbu daftar turli xil ma'lumotlarni tahlil qilish vazifalarini bajarish uchun IBM Db2 Event Store bir nechta mashhur ilmiy vositalar bilan qanday birlashtirilishi mumkinligini ko'rsatadi. Daftarni aylanib chiqayotib, siz ma'lumotlarni filtrlash uchun o'rganasiz va o'lchovlarning korrelyatsiyasi va kovariatsiyasiga misol keltirasiz. Ma'lumotlarni vizualizatsiya qilish uchun siz ba'zi diagrammalardan ham foydalanasiz.
 
-#### Probability plots, box plots, and histograms for temperature data
+#### Harorat ma'lumotlari uchun ehtimollik chizmalari, quti chizmalari va gistogrammalar
 
 ![plots](doc/source/images/plots.png)
 
@@ -227,20 +227,20 @@ This notebook shows how the IBM Db2 Event Store can be integrated with multiple 
 
 ![scatters](doc/source/images/scatters.png)
 
-### 7. Create and deploy a machine learning model
+### 7. Mashinani o'rganish modelini yarating va o'rnating
 
-This section demonstrates building and deploying a machine learning model. The notebook uses Spark MLlib to build and test a prediction model from our IoT temperature sensor data. At the end, it demonstrates how to deploy and use the model.
+Ushbu bo'lim mashinani o'rganish modelini yaratish va qo'llashni ko'rsatadi. Noutbuk IoT harorat sensori ma'lumotlarimizdan bashorat qilish modelini yaratish va sinab ko'rish uchun Spark MLlib-dan foydalanadi. Oxirida u modelni qanday joylashtirish va ishlatishni ko'rsatadi.
 
-Load the notebook, using the file **`Event_Store_ML_Model_Deployment.ipynb`**.
+**`Event_Store_ML_Model_Deployment.ipynb`** faylidan foydalanib, daftarni yuklang.
 
-If you are using the **Enterprise Edition** of Db2 Event Store, the notebook will deploy the model using Db2 Event Store which is built with Watson Studio Local. You can run the notebook as is.
+Agar siz Db2 Event Store-ning **Enterprise Edition**-dan foydalanayotgan bo'lsangiz, noutbuk Watson Studio Local bilan yaratilgan Db2 Event Store yordamida modelni o'rnatadi. Noutbukni avvalgidek ishga tushirishingiz mumkin.
 
-If you are using the **Developer Edition** of Db2 Event Store, you need an IBM Cloud Watson Machine Learning service instance to complete the deployment. You'll need to run the following steps to deploy:
+Agar siz Db2 Event Store ning **Developer Edition** dan foydalanayotgan bo‘lsangiz, joylashtirishni yakunlash uchun sizga IBM Cloud Watson Machine Learning xizmati namunasi kerak bo‘ladi. Joylashtirish uchun siz quyidagi amallarni bajarishingiz kerak bo'ladi:
 
-* Sign in and create the service [here](https://cloud.ibm.com/catalog/services/machine-learning).
-* Create an API key or IAM token using the instructions [here](https://dataplatform.cloud.ibm.com/docs/content/wsj/analyze-data/ml-authentication.html). Keep this key/token handy for the next step.
-* Scroll down to the section titled *With Db2 Event Store Developer Edition plus Machine Learning on IBM Cloud, save the model with metadata.*
-Set your apikey and url in the `wml_credentials` section like so
+* Tizimga kiring va xizmatni yarating [bu yerda](https://cloud.ibm.com/catalog/services/machine-learning).
+* [bu yerda](https://dataplatform.cloud.ibm.com/docs/content/wsj/analyze-data/ml-authentication.html) koʻrsatmalaridan foydalanib API kaliti yoki IAM tokenini yarating. Keyingi qadam uchun ushbu kalit/tokenni qo'lingizda saqlang.
+* *Db2 Event Store Developer Edition va IBM Cloud-da Machine Learning bilan modelni metama’lumotlar bilan saqlang* sarlavhali bo‘limga o‘ting.
+"wml_credentials" bo'limida apikey va url manzilingizni xuddi shunday o'rnating
 
 ```
 wml_credentials = {
@@ -252,26 +252,25 @@ wml_credentials = {
 ![wml_creds](doc/source/images/wml_creds.png)
 
 
-<!-- * Click on `Service credentials` and then `New credential` and `Add`.
-* Use `View credentials` and copy the credentials JSON. -->
-<!-- * You will use the JSON to set the `wml_credentials` variable in the notebook. -->
-* The notebook will pip install watson-machine-learning-client. After the install, you usually need to restart your kernel and run the notebook again from the top.
+<!-- * `Xizmat ma`lumotlari` va keyin `Yangi hisob ma`lumotlari` va `Qo`shish` ni bosing.
+* “Hisob maʼlumotlarini koʻrish” dan foydalaning va JSON hisob maʼlumotlaridan nusxa oling. -->
+<!-- * Notebookda `wml_credentials` o'zgaruvchisini o'rnatish uchun JSON-dan foydalanasiz. -->
+* Notebook Watson-machine-learning-clientni o'rnatadi. O'rnatishdan so'ng, odatda yadroni qayta ishga tushirishingiz va noutbukni yuqoridan qayta ishga tushirishingiz kerak.
 
-Once the model is built and deployed, you can easily send it a new measurement and get a predicted temperature (one at a time or in batches).
+Model qurilgan va o'rnatilgandan so'ng, siz osongina unga yangi o'lchov yuborishingiz va bashorat qilingan haroratni olishingiz mumkin (bir vaqtning o'zida yoki partiyalarda).
 
-#### Given a new data point
+#### Yangi maʼlumotlar nuqtasi berilgan
 
-```python
+``` piton
 new_data = {"deviceID" : 2, "sensorID": 24, "ts": 1541430459386, "ambient_temp": 30, "power": 10}
 ```
 
-#### The result returns a predicted temperature
+#### Natija taxmin qilingan haroratni qaytaradi
 
-```python
-predictions:  [48.98055760884435]
+``` piton
+bashorat: [48.98055760884435]
 ```
 
-## Sample output
+## Chiqish namunasi
 
-See all the notebooks with example output [here](examples).
-
+Chiqish namunasi bilan barcha noutbuklarni ko'ring [bu yerda](misollar).
