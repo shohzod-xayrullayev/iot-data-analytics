@@ -42,59 +42,59 @@ Aks holda, komponentlarni mahalliy sifatida joylashtirish uchun quyidagi amallar
 6. [Analyze the data](#6-analyze-the-data)
 7. [Create and deploy a machine learning model](#7-create-and-deploy-a-machine-learning-model)
 
-### 1. Clone the repo
+### 1. Clone the repository
 
-Clone the `db2-event-store-iot-analytics` repo locally. In a terminal, run:
+Clone the `iot-data-analytics` repo locally. In a terminal, run:
 
 ```bash
-git clone https://github.com/IBM/db2-event-store-iot-analytics
+git clone https://github.com/shohzod-xayrullayev/iot-data-analytics.git
 ```
 
 ### 2. Install the prerequisites
 
 #### Install Event Store
 
-> Note: This code pattern was developed with EventStore-DeveloperEdition 1.1.4
+> Eslatma: Ushbu kod namunasi EventStore-DeveloperEdition 1.1.4 bilan ishlab chiqilgan
 
-1. Install IBM® Db2® Event Store Developer Edition on Mac, Linux, or Windows by following the instructions [here.](https://www.ibm.com/products/db2-event-store)
+1. IBM® Db2® Event Store Developer Edition-ni Mac, Linux yoki Windows-da ko'rsatmalarga rioya qilib o'rnating [here.](https://www.ibm.com/products/db2-event-store)
 
 #### Install IBM Streams
 
-> Note: This is optional if you prefer to use the provided Jupyter notebook to load the data.
+> Eslatma: Maʼlumotlarni yuklash uchun taqdim etilgan Jupyter daftaridan foydalanmoqchi boʻlsangiz, bu ixtiyoriy.
 
-1. Install the Quick Start Edition(QSE) Docker image for IBM Streams 4.3.1 by following the instructions [here](https://www.ibm.com/support/knowledgecenter/SSCRJU_4.3.0/com.ibm.streams.qse.doc/doc/qse-docker.html).
+1. IBM Streams 4.3.1 uchun Quick Start Edition(QSE) Docker tasvirini [bu yerdagi](https://www.ibm.com/support/knowledgecenter/SSCRJU_4.3.0/com.ibm.streams) ko‘rsatmalariga rioya qilib o‘rnating. qse.doc/doc/qse-docker.html).
 
-1. Download the toolkit for Event Store Developer Edition 1.1.4 [here](https://github.com/IBMStreams/streamsx.eventstore/releases/tag/v1.2.0-Developer-v1.1.4).
+1. Event Store Developer Edition 1.1.4 [bu yerdan](https://github.com/IBMStreams/streamsx.eventstore/releases/tag/v1.2.0-Developer-v1.1.4) uchun asboblar to'plamini yuklab oling.
 
-1. Extract the contents of the toolkit. For example, you can make a `toolkits` directory in the hostdir that you mapped to a local dir when installing the Quick Start Edition and extract the files into that directory.
+1. Asboblar to'plamining mazmunini chiqarib oling. Masalan, siz Quick Start Edition-ni o'rnatayotganda mahalliy katalogga moslashtirilgan hostdir-da "toolkits" katalogini yaratishingiz va fayllarni ushbu katalogga chiqarishingiz mumkin.
 
    ```bash
    mkdir $HOME/hostdir/toolkits
    tar -zxvf  streamsx.eventstore_1.2.0-RELEASE.tgz -C $HOME/hostdir/toolkits/
    ```
 
-### 3. Create an IBM Db2 Event Store database and table
+### 3. IBM Db2 Event Store ma'lumotlar bazasi va jadvalini yarating
 
-The Db2 Event Store database and table can be created with one of the Jupyter notebooks provided. Refer to the notebook comments if you need to drop your existing database or table.
+Db2 Event Store ma'lumotlar bazasi va jadvali taqdim etilgan Jupyter noutbuklaridan biri bilan yaratilishi mumkin. Mavjud ma'lumotlar bazasi yoki jadvalingizni tashlab qo'yishingiz kerak bo'lsa, daftar sharhlariga qarang.
 
-Use the Db2 Event Store UI to create and run a notebook as follows:
+Noutbuk yaratish va ishga tushirish uchun Db2 Event Store UI dan quyidagi tarzda foydalaning:
 
-1. From the upper-left corner `☰` drop down menu, select `My Notebooks`.
-1. Click on `add notebooks`.
-1. Select the `From File` tab.
-1. Provide a name.
-1. Click `Choose File` and navigate to the `notebooks` directory in your cloned repo. Open the Jupyter notebook file named **`Event_Store_Table_Creation.ipynb`**.
-1. Scroll down and click on `Create Notebook`.
-1. Edit the `HOST` constant in the first code cell. You will need to enter your host's IP address here.
-1. Run the notebook using the menu `Cell ▷ Run all` or run the cells individually with the play button.
+1. Yuqori chap burchakdagi `☰` ochiladigan menyudan `Mening noutbuklarim`-ni tanlang.
+1. “Noutbuklar qo‘shish” tugmasini bosing.
+1. "Fayldan" yorlig'ini tanlang.
+1. Ism bering.
+1. “Faylni tanlash” tugmasini bosing va klonlangan repodagi “noutbuklar” katalogiga o‘ting. **`Event_Store_Table_Creation.ipynb`** nomli Jupyter notebook faylini oching.
+1. Pastga aylantiring va “Noutbuk yaratish” tugmasini bosing.
+1. Birinchi kod katagida `HOST` doimiysini tahrirlang. Bu yerda siz uy egasining IP manzilini kiritishingiz kerak bo'ladi.
+1. “Hujayra ▷ Hammasini ishga tushirish” menyusidan foydalanib daftarni ishga tushiring yoki “Play” tugmasi bilan yacheykalarni alohida ishga tushiring.
 
-### 4. Add the sample IoT data
+### 4. IoT maʼlumotlarining namunasini qoʻshing
 
-#### Generate the data
+#### Ma'lumotlarni yaratish
 
-This repository includes a generated sample IoT dataset in CSV format that contains 1 million records. The sample CSV dataset can be found at `data/sample_IOT_table.csv`.
+Ushbu ombor 1 million yozuvni o'z ichiga olgan CSV formatida yaratilgan namunaviy IoT ma'lumotlar to'plamini o'z ichiga oladi. Namunaviy CSV maʼlumotlar toʻplamini “data/sample_IOT_table.csv” sahifasida topish mumkin.
 
-Alternatively, a CSV dataset containing a user-specified number of records can be generated with the provided Python script at `data/generator.py`. A Python environment with pandas and NumPy installed is required to run the script.
+Shu bilan bir qatorda, foydalanuvchi tomonidan belgilangan sonli yozuvlarni oʻz ichiga olgan CSV maʼlumotlar toʻplami taqdim etilgan Python skripti yordamida “data/generator.py” orqali yaratilishi mumkin. Skriptni ishga tushirish uchun pandalar va NumPy o'rnatilgan Python muhiti talab qilinadi.
 
 ```bash
 cd db2-event-store-iot-analytics/data
@@ -103,11 +103,11 @@ python ./generator.py -c <Record Count>
 
 #### Stream the data into Event Store
 
-If you have installed IBM Streams, use a streams flow to feed the sample data into Event Store. Otherwise, a data feed notebook has been provided as a shortcut.
+Agar siz IBM Streams dasturini o'rnatgan bo'lsangiz, Voqealar do'koniga namuna ma'lumotlarini yuborish uchun oqimlar oqimidan foydalaning. Aks holda, ma'lumotlar tasmasi daftar yorliq sifatida taqdim etilgan.
 
-Click to expand the data feed instructions for IBM Streams or for the Jupyter notebook. Choose one:
+IBM Streams yoki Jupyter noutbuki uchun maʼlumotlar tasmasi koʻrsatmalarini kengaytirish uchun bosing. Birini tanla:
 
-<details><summary>Use an IBM Streams flow</summary>
+<details><summary>IBM Streams oqimidan foydalaning</summary>
 <p>
 
 1. Use VNC to connect to your IBM Streams QSE at vnc://streamsqse.localdomain:5905
