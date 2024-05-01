@@ -1,4 +1,4 @@
-# Mashinani o'rganish va ilg'or tahlillar yordamida IoT sensori ma'lumotlarini tahlil qiling
+# Ilg'or tahlillar yordamida IoT sensori ma'lumotlarini tahlil qilish
 
 Ushbu kod namunasi IBM Db2 Event Store bilan o'zaro ishlash uchun Jupyter noutbuklaridan foydalanishni namoyish etadi -- ma'lumotlar bazasi ob'ektlarini yaratishdan tortib, ilg'or tahlil va mashinani o'rganish modelini ishlab chiqish va joylashtirishgacha.
 
