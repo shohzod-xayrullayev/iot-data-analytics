@@ -7,32 +7,32 @@ Oddiy IBM Streams oqimi CSV faylidan Event Store jadvaliga namuna ma'lumotlarini
 
 Db2 Voqealar do'koni - bu Apache Spark va Apache Parket ma'lumotlar formatida qurilgan, katta tuzilgan ma'lumotlar hajmlari va real vaqtda tahlil qilish uchun mo'ljallangan xotiradagi ma'lumotlar bazasi. Yechim voqealarga asoslangan ma'lumotlarni qayta ishlash va tahlil qilish uchun optimallashtirilgan. U IoT yechimlari, toʻlovlar, logistika va veb-tijorat kabi voqealarga asoslangan rivojlanayotgan ilovalarni qoʻllab-quvvatlashi mumkin. U moslashuvchan, kengaytiriladigan va vaqt o'tishi bilan o'zgaruvchan biznes ehtiyojlaringizga tezda moslasha oladi. Db2 Event Store bepul ishlab chiquvchi nashrida va hozir yuklab olishingiz mumkin bo'lgan korporativ nashrda mavjud. Korxona nashri oldindan ishlab chiqarish va sinovdan o‘tkazish uchun bepul, qo‘shimcha ma’lumot olish uchun [rasmiy mahsulot veb-sahifasiga](https://www.ibm.com/products/db2-event-store) tashrif buyuring.
 
-> Note: Db2 Event Store is built with IBM Watson Studio
+> Eslatma: Db2 Event Store IBM Watson Studio bilan yaratilgan
 
-After completing this code pattern, you’ll understand how to:
+Ushbu kod namunasini to'ldirgandan so'ng, qanday qilishni tushunasiz:
 
-* Interact with Db2 Event Store using Python and a Jupyter notebook.
-* Use IBM Streams to feed data into Db2 Event Store.
-* Visualize data using Matplotlib charts.
-* Build and test a machine learning model.
-* Deploy and use the model with Watson Machine Learning.
+* Python va Jupyter noutbukidan foydalanib Db2 Event Store bilan o'zaro aloqada bo'ling.
+* Db2 Event Store'ga ma'lumotlarni yuborish uchun IBM Streams dasturidan foydalaning.
+* Matplotlib diagrammalaridan foydalangan holda ma'lumotlarni ingl.
+* Mashinani o'rganish modelini yarating va sinab ko'ring.
+* Watson Machine Learning bilan modelni o'rnating va foydalaning.
 
 ![architecture](doc/source/images/architecture.png)
 
 ## Flow
 
-1. Create the Db2 Event Store database and table.
-2. Feed the sample IoT dataset into Db2 Event Store.
-3. Query the table using Spark SQL.
-4. Analyze the data with Matplotlib charts.
-5. Create and deploy a machine learning model.
+1. Db2 Event Store ma'lumotlar bazasi va jadvalini yarating.
+2. IoT ma'lumotlar to'plamini Db2 Event Store'ga yuboring.
+3. Spark SQL yordamida jadvalga so‘rov o‘tkazing.
+4. Matplotlib diagrammalari yordamida ma’lumotlarni tahlil qiling.
+5. Mashinani o'rganish modelini yaratish va joylashtirish.
 
-## Running Db2 EventStore in Cloud Pak for Data (CPD)
+## Db2 EventStore-ni Cloud Pak for Data (CPD) da ishga tushirish
 
-If you have a Cloud Pak for Data instance deployed, please follow the [Cloud Pak Readme](README_CLOUDPAK.md) to run Db2 EventStore in CPD.
-Otherwise, continue with the following steps to deploy the components locally.
+Agar sizda Cloud Pak for Data namunasi oʻrnatilgan boʻlsa, Db2 EventStore’ni CPD’da ishga tushirish uchun [Cloud Pak Readme](README_CLOUDPAK.md) ga amal qiling.
+Aks holda, komponentlarni mahalliy sifatida joylashtirish uchun quyidagi amallarni bajaring.
 
-## Steps
+## Qadamlar
 
 1. [Clone the repo](#1-clone-the-repo)
 2. [Install the prerequisites](#2-install-the-prerequisites)
